@@ -23,13 +23,34 @@ boton.addEventListener('click', function() {
 		// 4. Programar qué pasa al hacer clic en "Eliminar"
 		btnEliminar.onclick = function() {
             if (li.parentNode === lista) {
-                // Si está en la lista de pendientes, la movemos a la de hechas
+                // PASO 1: Mover de Pendientes a Hechas
                 listaHecha.appendChild(li);
-                btnEliminar.textContent = "Deshacer"; // Cambiamos el texto en lugar de borrar el botón
+                btnEliminar.textContent = "Deshacer";
+
+                // PASO 2: Crear el botón de "Eliminar Definitivamente"
+                const btnFinal = document.createElement('button');
+                btnFinal.textContent = "Eliminar Definitivamente 🗑️";
+                btnFinal.style.backgroundColor = "#ff4444"; // Un color de advertencia
+                
+                btnFinal.onclick = function() {
+                    li.remove(); // Aquí sí desaparece para siempre
+                };
+
+                li.appendChild(btnFinal);
+
+                // Guardamos una referencia para poder quitarlo si el usuario pulsa "Deshacer"
+                li.dataset.btnFinalId = "true"; 
+                
             } else {
-                // Si ya estaba en hecha, la regresamos a pendientes
+                // PASO 3: Regresar de Hechas a Pendientes (Deshacer)
                 lista.appendChild(li);
                 btnEliminar.textContent = "Eliminar";
+
+                // Quitamos el botón de eliminar definitivamente si el usuario se arrepintió
+                const botones = li.querySelectorAll('button');
+                botones.forEach(b => {
+                    if (b.textContent.includes("Definitivamente")) b.remove();
+                });
             }
         };
 
