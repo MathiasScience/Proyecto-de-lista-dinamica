@@ -36,4 +36,5 @@ Este proyecto cuenta con la licencia que se encuentra en el archivo `LICENSE`.
 
 
 ## Comentarios (devs)
-32-bits-or-64 mathi agrela el error de luz y las tareas || abr 30 2026 6:32:30PM GMT -04:00
+32-bits-or-64 mathi agrela el error de luz y las tareas. || abr 30 2026 6:32:30PM GMT -04:00
+32-bits-or-64 mathi ya lo agrele. || mayo 09 2026 8:55:30PM GMT -04:00
